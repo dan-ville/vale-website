@@ -12,7 +12,7 @@ const CharacterGallery = () => {
     <GalleryGrid>
       {characters
         ? characters.map((character: CharacterInterface, index: number) => (
-            <Character character={character} key={index} />
+            <Character character={character} index={index} />
           ))
         : null}
     </GalleryGrid>

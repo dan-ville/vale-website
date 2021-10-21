@@ -1,13 +1,22 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,400;0,600;0,800;0,900;1,100;1,400;1,600;1,800;1,900&family=Trade+Winds&family=Uncial+Antiqua&family=UnifrakturCook:wght@700&display=swap");
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 
+  font-family: 'Trade Winds', cursive;
+
+  font-family: 'Uncial Antiqua', cursive;
+
+  font-family: 'UnifrakturCook', cursive; 
+  
+  font-family: 'Prompt', sans-serif;
+*/
+
+/* reset */
+html,
+body,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: hsl(0, 0%, 90%);
+  font-family: "Prompt", serif;
 }

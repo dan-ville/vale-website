@@ -10,7 +10,14 @@ export const Card = styled.div`
     rgba(7, 45, 66, 0.1)
   );
 `;
+export const CardHeader = styled.div`
+  padding: 0.5rem 1rem;
+`;
+export const CharacterName = styled.h2`
+  color: ${props => props.theme.accent};
+`;
 export const Thumbnail = styled.img`
-    width: 100%;
-    object-fit: cover;
-`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;

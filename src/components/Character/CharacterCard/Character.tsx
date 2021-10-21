@@ -1,19 +1,21 @@
 import React from "react";
 import { CharacterInterface } from "../../../hooks/useCharacters";
-import { Card, Thumbnail } from "./styled";
+import { Card, CardHeader, CharacterName, Thumbnail } from "./styled";
 
 type CharacterProps = {
   character: CharacterInterface;
-  key: number;
+  index: number;
 };
 
-const Character: React.FC<CharacterProps> = ({ character, key }) => {
+const Character: React.FC<CharacterProps> = ({ character, index }) => {
   return (
-    <Card key={key} onClick={() => console.log(character)}>
-      <h2>{character.Name}</h2>
-      <p>Tribe: {character["Name (from Tribe)"]}</p>
+    <Card key={index} onClick={() => console.log(character)}>
+      <CardHeader>
+        <CharacterName>{character.Name}</CharacterName>
+        <p>Tribe: {character["Name (from Tribe)"]}</p>
+        <p>Species: {character["Name (from Species)"]}</p>
+      </CardHeader>
       <Thumbnail src={character["Inspirational images"]?.[0].url} alt="" />
-      <p>Species: {character["Name (from Species)"]}</p>
     </Card>
   );
 };
