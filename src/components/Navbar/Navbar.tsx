@@ -5,7 +5,7 @@ const Navbar = () => {
     <NavbarWrapper>
       <NavItems>
         <NavItem to="/">Home</NavItem>
-        {/* <NavItem to="/">Read</NavItem> */}
+        <NavItem to="/read">Read</NavItem>
         <NavItem to="/characters">Characters</NavItem>
       </NavItems>
     </NavbarWrapper>

@@ -1,26 +1,27 @@
+import { Link } from "react-router-dom";
 import { PageTitle } from "../../pageStyles";
-import { Summary, SummaryHeading, SummaryAccent } from "./styled";
+import {
+  Summary,
+  SummaryHeading,
+  SummaryAccent,
+  CTA,
+  ButtonCTA,
+} from "./styled";
 
 export default function Home() {
   return (
     <>
       <PageTitle>The Vale</PageTitle>
       <Summary>
-        <SummaryHeading>When the world was one...</SummaryHeading>
+        <SummaryHeading>Long ago, when the world was one...</SummaryHeading>
         <p>
-          Long ago, when continents were yet joined and the people of Earth were
-          eight tribes, one tribe fell to the temptation of power.
+          When continents were yet joined, one of the eight tribes of man waged
+          war on the other tribes using dark powers.
         </p>
         <p>
-          They acquired great powers to turn into dark monsters and wage war on
-          the other tribes. To survive, the tribes allied themselves with the
-          Ancients, beast spirits from whom originated all animal life.
-        </p>
-        <p>
-          The Ancients gave the seven tribes the power to shapeshift into spirit
-          warriors, each resembling the respective animal of their likeness.
-          Through their power, the seven tribes drove back the eigth tribe and
-          banished them to the darkness outside the Vale.
+          To protect their world, the ancient animal spirits gave the rest of
+          humanity the power to shift into animal warriors and win the war,
+          driving the dark tribe to banishment outside the Vale.
         </p>
         <p>
           But when catastrophies begin again in the Vale, the tribes start to
@@ -33,6 +34,11 @@ export default function Home() {
           all while fighting for trust in a world of lies.
         </SummaryAccent>
       </Summary>
+      <CTA>
+        <Link to="/read">
+          <ButtonCTA>Read the first chapter</ButtonCTA>
+        </Link>
+      </CTA>
     </>
   );
 }

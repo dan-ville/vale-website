@@ -1,4 +1,4 @@
-import AIRTABLE_API from "../../components/axios/instance";
+import AIRTABLE_API from "../../components/Axios/instance";
 
 const { REACT_APP_AIRTABLE_BASE_ID: baseId } = process.env;
 
