@@ -1,5 +1,5 @@
 import useCharacters, {
-  CharacterInterface,
+  CharacterObjectInterface,
 } from "../../../hooks/useCharacters";
 import LoadingGif from "../../LoadingGif/LoadingGif";
 import Character from "../CharacterCard/Character";
@@ -12,9 +12,11 @@ const CharacterGallery = () => {
   return (
     <GalleryGrid>
       {characters
-        ? characters.map((character: CharacterInterface, index: number) => (
-            <Character character={character} index={index} />
-          ))
+        ? characters.map(
+            (character: CharacterObjectInterface, index: number) => (
+              <Character character={character} index={index} />
+            )
+          )
         : null}
     </GalleryGrid>
   );

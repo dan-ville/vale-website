@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import getCharacters from "./helpers/getCharacters";
 
-export interface CharacterInterface {
+export interface CharacterFieldsInterface {
   Name: string;
   "Inspirational images"?: Array<any>;
   Scenes?: Array<string>;
@@ -22,14 +22,22 @@ export interface CharacterInterface {
   "Name (from Tribe)"?: Array<string>;
   "Name (from Species)"?: Array<string>;
 }
+export interface CharacterObjectInterface {
+  createdTime: string;
+  fields: CharacterFieldsInterface;
+  id: string;
+}
 
 const useCharacters = () => {
-  const [characters, setCharacters] = useState<CharacterInterface[] | any>([]);
+  const [characters, setCharacters] = useState<
+    CharacterObjectInterface[] | any
+  >([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getCharacters().then((res) => {
       setCharacters(res);
+      console.log(res);
       setIsLoading(false);
     });
   }, []);

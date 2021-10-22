@@ -10,5 +10,5 @@ export default async function getCharacters() {
     throw new Error("Error", { result });
   }
 
-  return result.data.records.map((record) => record.fields);
+  return result.data.records;
 }
