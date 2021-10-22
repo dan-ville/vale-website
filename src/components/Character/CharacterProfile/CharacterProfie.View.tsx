@@ -1,16 +1,84 @@
 import { CharacterObjectInterface } from "../../../hooks/useCharacters";
+import Loading from "../../Loading/Loading";
+import {
+  Profile,
+  Header,
+  Section,
+  SectionHeader,
+  CharacterName,
+  ProfilePic,
+  MetaSection,
+  MetaHeader,
+  MetaDataText,
+  MetaItemWrapper,
+} from "./styled";
 
 type CharacterProfileProps = {
   character: CharacterObjectInterface;
 };
 
 const CharacterView: React.FC<CharacterProfileProps> = ({ character }) => {
+  const meta = [
+    {
+      item: "Full Name",
+      text: character.fields["Full Name"],
+    },
+    {
+      item: "Age",
+      text: character.fields.Age.toString(),
+    },
+    {
+      item: "Tribe",
+      text: character.fields["Name (from Tribe)"],
+    },
+    {
+      item: "Species",
+      text: character.fields["Name (from Species)"],
+    },
+    {
+      item: "Title/Nickname",
+      text: character.fields["Title/Nickname"] || "N/A"
+    }
+  ];
+
+  console.log(character);
+  if (!character) return <Loading />;
+
   return (
-    <>
-      <h1>{character.fields.Name}</h1>
-      <p>{character.fields["Name (from Tribe)"]}</p>
-      <p>{character.fields["Name (from Species)"]}</p>
-    </>
+    <Profile>
+      <Header>
+        <CharacterName>{character.fields.Name}</CharacterName>
+      </Header>
+      <Section>
+        <ProfilePic src={character.fields["Inspirational images"]?.[0].url} />
+        <MetaSection>
+          {meta
+            ? meta.map((x, i) => (
+                <MetaItem key={i} item={x.item} text={x.text} />
+              ))
+            : null}
+        </MetaSection>
+      </Section>
+      <br />
+      <Header>
+        <SectionHeader>Biography</SectionHeader>
+      </Header>
+      <Section>
+        <MetaSection>
+          <MetaDataText>{character.fields.Biography}</MetaDataText>
+        </MetaSection>
+      </Section>
+    </Profile>
+  );
+};
+
+type MetaItemProps = { item: string; text: string | string[] | undefined };
+const MetaItem: React.FC<MetaItemProps> = ({ item, text }) => {
+  return (
+    <MetaItemWrapper>
+      <MetaHeader>{item}:</MetaHeader>
+      <MetaDataText>{text}</MetaDataText>
+    </MetaItemWrapper>
   );
 };
 
