@@ -1,13 +1,14 @@
 import useCharacters, {
   CharacterInterface,
 } from "../../../hooks/useCharacters";
+import LoadingGif from "../../LoadingGif/LoadingGif";
 import Character from "../CharacterCard/Character";
 import { GalleryGrid } from "./styled";
 
 const CharacterGallery = () => {
   const [characters, isLoading] = useCharacters();
 
-  if (isLoading) return <></>;
+  if (isLoading) return <LoadingGif />;
   return (
     <GalleryGrid>
       {characters

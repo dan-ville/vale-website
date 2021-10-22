@@ -14,7 +14,7 @@ export const Button = styled.button`
   font-size: 1rem;
   background-color: ${(props) => props.theme.bg};
   padding: 0.3em 0.5em;
-  margin: 0 0.5em;
+  margin: 1em 0;
   text-decoration: none;
   border: 1px solid ${(props) => props.theme.text.light};
   border-radius: 0.2em;

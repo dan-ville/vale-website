@@ -9,7 +9,7 @@ export const NavbarWrapper = styled.nav`
 export const NavItems = styled.ul`
   list-style: none;
   display: flex;
-  justify-content: right;
+  justify-content: center;
 `;
 export const NavItem = styled(Link)`
   font-size: 1rem;
