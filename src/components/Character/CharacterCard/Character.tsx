@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { CharacterObjectInterface } from "../../../hooks/useCharacters";
 import { Card, CardHeader, CharacterName, Thumbnail } from "./styled";
 
@@ -8,10 +9,14 @@ type CharacterProps = {
 };
 
 const Character: React.FC<CharacterProps> = ({ character, index }) => {
-  const { fields } = character;
-  
+  const { fields, id } = character;
+  const history = useHistory();
+  const goToProfile = (event: React.MouseEvent): void => {
+    const route = `/characters/${id}`;
+    history.push(`${route}`);
+  };
   return (
-    <Card key={index} onClick={() => console.log(character)}>
+    <Card key={index} onClick={(e) => goToProfile(e)}>
       <CardHeader>
         <CharacterName>{fields.Name}</CharacterName>
         <p>Tribe: {fields["Name (from Tribe)"]}</p>

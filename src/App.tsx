@@ -6,6 +6,7 @@ import theme from "./theme";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Characters from "./components/Character/Characters";
 import Read from "./components/Read/Read";
+import CharacterProfile from "./components/Character/CharacterProfile/CharacterProfile";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/characters">
               <Characters />
             </Route>
+            <Route exact path="/characters/:id" component={CharacterProfile}/>
             <Route exact path="/read">
               <Read />
             </Route>

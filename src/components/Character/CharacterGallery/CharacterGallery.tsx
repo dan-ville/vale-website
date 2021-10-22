@@ -1,14 +1,15 @@
+import React from "react";
 import useCharacters, {
   CharacterObjectInterface,
 } from "../../../hooks/useCharacters";
-import LoadingGif from "../../LoadingGif/LoadingGif";
+import Loading from "../../Loading/Loading";
 import Character from "../CharacterCard/Character";
 import { GalleryGrid } from "./styled";
 
-const CharacterGallery = () => {
+const CharacterGallery: React.FC = () => {
   const [characters, isLoading] = useCharacters();
 
-  if (isLoading) return <LoadingGif />;
+  if (isLoading) return <Loading />;
   return (
     <GalleryGrid>
       {characters
