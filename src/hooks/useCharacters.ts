@@ -37,7 +37,6 @@ const useCharacters = () => {
   useEffect(() => {
     getCharacters().then((res) => {
       setCharacters(res);
-      console.log(res);
       setIsLoading(false);
     });
   }, []);
