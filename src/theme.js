@@ -4,7 +4,7 @@ const theme = {
     light: "hsl(0, 0%, 100%)",
     dark: "hsl(0, 0%, 4%)",
   },
-  accent: "hsl(10, 100%, 45%)",
+  accent: "hsl(10, 100%, 55%)",
 };
 
 export default theme;

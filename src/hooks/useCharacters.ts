@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getCharacters from "./helpers/getCharacters";
+import getCharacters from "../helpers/characters/getCharacters";
 
 export interface CharacterFieldsInterface {
   Name: string;
