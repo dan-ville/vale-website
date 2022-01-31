@@ -22,6 +22,19 @@ const CharacterGallery: React.FC = () => {
     setFilteredCharacters(characters)
   }, [characters])
 
+  const sortAlphabetically = (
+    a: CharacterObjectInterface,
+    b: CharacterObjectInterface
+  ) => {
+    if (a.fields.Name < b.fields.Name) {
+      return -1
+    }
+    if (a.fields.Name > b.fields.Name) {
+      return 1
+    }
+    return 0
+  }
+
   if (isLoading) return <Loading />
   return (
     <>
@@ -34,15 +47,15 @@ const CharacterGallery: React.FC = () => {
       </InputsWrapper>
       <GalleryGrid>
         {filteredCharacters
-          ? filteredCharacters.map(
-              (character: CharacterObjectInterface, index: number) => (
+          ? filteredCharacters
+              .sort(sortAlphabetically)
+              .map((character: CharacterObjectInterface, index: number) => (
                 <Character
                   key={character.id}
                   character={character}
                   index={index}
                 />
-              )
-            )
+              ))
           : null}
       </GalleryGrid>
     </>

@@ -33,13 +33,13 @@ const CharacterView: React.FC<CharacterProfileProps> = ({ character }) => {
     },
     {
       item: "Species",
-      text: character.fields["Name (from Species)"],
+      text: character.fields["Name (from Species)"]?.join(", "),
     },
     {
       item: "Title/Nickname",
-      text: character.fields["Title/Nickname"] || "N/A"
-    }
-  ];
+      text: character.fields["Title/Nickname"] || "N/A",
+    },
+  ]
 
   if (!character) return <Loading />;
 
