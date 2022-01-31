@@ -3,45 +3,36 @@ import useCharacters from "../../../hooks/useCharacters"
 import { CharacterObjectInterface } from "../../../types/character/character"
 import Loading from "../../Loading/Loading"
 import Character from "../CharacterCard/Character"
-import { GalleryGrid, InputsWrapper, SearchField, SelectField } from "./styled"
+import Filters from "./Filters/Filters"
+import { GalleryGrid } from "./styled"
 
 const CharacterGallery: React.FC = () => {
   const [characters, isLoading] = useCharacters()
+  const [filters, setFilters] = useState({
+    nameFilter: "",
+    tribeFilter: "",
+  })
   const [filteredCharacters, setFilteredCharacters] = useState(characters)
 
-  const tribes = Array.from(
-    new Set<string>(
-      characters.map(
-        (character: CharacterObjectInterface) =>
-          character.fields["Name (from Tribe)"]?.[0]
-      )
-    )
-  )
-
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.currentTarget
-
-    const characterMatches = characters.filter(
-      (character: CharacterObjectInterface) =>
-        character.fields.Name.toLowerCase().includes(value.toLocaleLowerCase())
-    )
-    setFilteredCharacters(characterMatches)
-  }
-  const searchByTribe = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.currentTarget
-    if (value === "default") {
-      setFilteredCharacters(characters)
-    } else {
-      const characterMatches = characters.filter(
-        (character: CharacterObjectInterface) =>
-          character.fields["Name (from Tribe)"]?.[0] === value
-      )
-      setFilteredCharacters(characterMatches)
-    }
-  }
   useEffect(() => {
-    setFilteredCharacters(characters)
-  }, [characters])
+    const { nameFilter, tribeFilter } = filters
+    const multiFilter = (
+      data: CharacterObjectInterface[]
+    ): CharacterObjectInterface[] | null => {
+      const filteredData = data.filter(
+        (character: CharacterObjectInterface) => {
+          const name = character.fields.Name.toLowerCase()
+          const tribe = character.fields["Name (from Tribe)"]?.[0]
+          if (nameFilter && !name.includes(nameFilter)) return false
+          if (tribeFilter && tribe !== tribeFilter) return false
+          return true
+        }
+      )
+      return filteredData
+    }
+
+    setFilteredCharacters(multiFilter(characters))
+  }, [characters, filters])
 
   const sortAlphabetically = (
     a: CharacterObjectInterface,
@@ -56,24 +47,24 @@ const CharacterGallery: React.FC = () => {
     return 0
   }
 
+  const tribes = Array.from(
+    new Set<string>(
+      characters.map(
+        (character: CharacterObjectInterface) =>
+          character.fields["Name (from Tribe)"]?.[0]
+      )
+    )
+  )
+
   if (isLoading) return <Loading />
+
   return (
     <>
-      <InputsWrapper>
-        <SearchField
-          type="text"
-          placeholder="Search by name"
-          onChange={handleSearch}
-        />
-        <SelectField placeholder="Search by name" onChange={searchByTribe}>
-          <option value="default">Search by tribe</option>
-          {tribes.map((tribe: string, _index: number) => (
-            <option key={_index} value={tribe}>
-              {tribe}
-            </option>
-          ))}
-        </SelectField>
-      </InputsWrapper>
+      <Filters
+        characters={characters}
+        setFilters={setFilters}
+        tribes={tribes}
+      />
       <GalleryGrid>
         {filteredCharacters
           ? filteredCharacters
