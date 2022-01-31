@@ -29,11 +29,15 @@ const CharacterGallery: React.FC = () => {
   }
   const searchByTribe = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.currentTarget
-    const characterMatches = characters.filter(
-      (character: CharacterObjectInterface) =>
-        character.fields["Name (from Tribe)"]?.[0] === value
-    )
-    setFilteredCharacters(characterMatches)
+    if (value === "default") {
+      setFilteredCharacters(characters)
+    } else {
+      const characterMatches = characters.filter(
+        (character: CharacterObjectInterface) =>
+          character.fields["Name (from Tribe)"]?.[0] === value
+      )
+      setFilteredCharacters(characterMatches)
+    }
   }
   useEffect(() => {
     setFilteredCharacters(characters)
@@ -62,7 +66,7 @@ const CharacterGallery: React.FC = () => {
           onChange={handleSearch}
         />
         <SelectField placeholder="Search by name" onChange={searchByTribe}>
-          <option>Search by tribe</option>
+          <option value="default">Search by tribe</option>
           {tribes.map((tribe: string, _index: number) => (
             <option key={_index} value={tribe}>
               {tribe}
