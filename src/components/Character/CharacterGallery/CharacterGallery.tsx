@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from "react";
-import useCharacters, {
-  CharacterObjectInterface,
-} from "../../../hooks/useCharacters";
-import Loading from "../../Loading/Loading";
-import Character from "../CharacterCard/Character";
-import { GalleryGrid, InputsWrapper, SearchField } from "./styled";
+import React, { useEffect, useState } from "react"
+import useCharacters from "../../../hooks/useCharacters"
+import { CharacterObjectInterface } from "../../../types/character/character"
+import Loading from "../../Loading/Loading"
+import Character from "../CharacterCard/Character"
+import { GalleryGrid, InputsWrapper, SearchField } from "./styled"
 
 const CharacterGallery: React.FC = () => {
-  const [characters, isLoading] = useCharacters();
-  const [filteredCharacters, setFilteredCharacters] = useState(characters);
+  const [characters, isLoading] = useCharacters()
+  const [filteredCharacters, setFilteredCharacters] = useState(characters)
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.currentTarget;
+    const { value } = event.currentTarget
     const characterMatch = characters.filter(
       (character: CharacterObjectInterface) =>
         character.fields.Name.toLowerCase().includes(value.toLocaleLowerCase())
-    );
-    setFilteredCharacters(characterMatch);
-  };
-
+    )
+    setFilteredCharacters(characterMatch)
+  }
 
   useEffect(() => {
-    setFilteredCharacters(characters);
-  }, [characters]);
+    setFilteredCharacters(characters)
+  }, [characters])
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading />
   return (
     <>
       <InputsWrapper>
@@ -38,13 +36,17 @@ const CharacterGallery: React.FC = () => {
         {filteredCharacters
           ? filteredCharacters.map(
               (character: CharacterObjectInterface, index: number) => (
-                <Character character={character} index={index} />
+                <Character
+                  key={character.id}
+                  character={character}
+                  index={index}
+                />
               )
             )
           : null}
       </GalleryGrid>
     </>
-  );
-};
+  )
+}
 
-export default CharacterGallery;
+export default CharacterGallery

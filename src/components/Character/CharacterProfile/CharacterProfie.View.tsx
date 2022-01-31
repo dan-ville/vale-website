@@ -1,4 +1,4 @@
-import { CharacterObjectInterface } from "../../../hooks/useCharacters";
+import { CharacterObjectInterface } from "../../../types/character/character";
 import Loading from "../../Loading/Loading";
 import {
   Profile,
@@ -41,7 +41,6 @@ const CharacterView: React.FC<CharacterProfileProps> = ({ character }) => {
     }
   ];
 
-  console.log(character);
   if (!character) return <Loading />;
 
   return (

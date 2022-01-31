@@ -2,8 +2,9 @@ require("dotenv").config()
 const axios = require("axios")
 const express = require("express")
 const cors = require("cors")
-const PORT = 8000
 const app = express()
+const Airtable = require("airtable")
+const PORT = 8000
 
 const {
   REACT_APP_AIRTABLE_API_URL: baseURL,
@@ -18,6 +19,8 @@ const AXIOS = axios.create({
   },
 })
 
+const base = new Airtable({ apiKey }).base(baseId)
+
 app.use(cors())
 
 app.listen(PORT, () => {
@@ -31,4 +34,15 @@ app.get("/characters", (req, res) => {
       res.json(response.data.records)
     })
     .catch((error) => console.error(error))
+})
+
+app.get("/characters/:id", (req, res) => {
+  const { id } = req.params
+  base("Characters").find(id, function (err, record) {
+    if (err) {
+      console.error(err)
+      return
+    }
+    res.json(record)
+  })
 })

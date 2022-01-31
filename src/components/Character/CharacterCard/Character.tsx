@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { CharacterObjectInterface } from "../../../hooks/useCharacters";
+import { CharacterObjectInterface } from "../../../types/character/character";
 import { Card, CardHeader, CharacterName, Thumbnail } from "./styled";
 
 type CharacterProps = {
