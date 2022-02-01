@@ -1,4 +1,4 @@
-import { Button, PageTitle } from "../../pageStyles";
+import {  ButtonCTA, PageTitle } from "../../pageStyles";
 import {
   Section,
   CTASection,
@@ -26,16 +26,17 @@ const Read = () => {
             </em>
             , book one in the upcoming series!
           </CTAText>
+          <br />
           <DownloadAnchor
             download
             href="https://drive.google.com/file/d/1_ayC9fwnRcBm0mdY68iXERF9djAYhbJX/view?usp=sharing"
           >
-            <Button>Click to download</Button>
+            <ButtonCTA>Click to download</ButtonCTA>
           </DownloadAnchor>
         </CTASection>
       </Section>
     </>
-  );
+  )
 };
 
 export default Read;

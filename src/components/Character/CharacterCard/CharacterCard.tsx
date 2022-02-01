@@ -8,7 +8,7 @@ type CharacterProps = {
   index: number
 }
 
-const Character: React.FC<CharacterProps> = ({ character, index }) => {
+const CharacterCard: React.FC<CharacterProps> = ({ character, index }) => {
   const { fields, id } = character
   const history = useHistory()
   const goToProfile = (event: React.MouseEvent): void => {
@@ -27,4 +27,4 @@ const Character: React.FC<CharacterProps> = ({ character, index }) => {
     </Card>
   )
 }
-export default Character
+export default CharacterCard

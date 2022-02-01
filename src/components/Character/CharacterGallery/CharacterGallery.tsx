@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import useCharacters from "../../../hooks/useCharacters"
 import { CharacterObjectInterface } from "../../../types/character/character"
 import Loading from "../../Loading/Loading"
-import Character from "../CharacterCard/Character"
+import CharacterCard from "../CharacterCard/CharacterCard"
 import Filters from "./Filters/Filters"
 import { GalleryGrid } from "./styled"
 
@@ -70,7 +70,7 @@ const CharacterGallery: React.FC = () => {
           ? filteredCharacters
               .sort(sortAlphabetically)
               .map((character: CharacterObjectInterface, index: number) => (
-                <Character
+                <CharacterCard
                   key={character.id}
                   character={character}
                   index={index}

@@ -1,12 +1,6 @@
-import { Link } from "react-router-dom";
-import { PageTitle } from "../../pageStyles";
-import {
-  Summary,
-  SummaryHeading,
-  SummaryAccent,
-  CTA,
-  ButtonCTA,
-} from "./styled";
+import { Link } from "react-router-dom"
+import { ButtonCTA, PageTitle } from "../../pageStyles"
+import { Summary, SummaryHeading, SummaryAccent, CTA } from "./styled"
 
 export default function Home() {
   return (
@@ -40,5 +34,5 @@ export default function Home() {
         </Link>
       </CTA>
     </>
-  );
+  )
 }
