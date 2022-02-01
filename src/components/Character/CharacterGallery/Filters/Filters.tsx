@@ -1,6 +1,7 @@
 import React from "react"
 // import { Button } from "../../../../pageStyles"
 import { CharacterObjectInterface } from "../../../../types/character/character"
+import sortAlphabetically from "../../../../utils/sortAlphabetically"
 import { InputsWrapper, SearchField, SelectField } from "../styled"
 
 type FilterState = {
@@ -31,6 +32,7 @@ const Filters: React.FC<Props> = ({ characters, setFilters, tribes }) => {
   //     tribeFilter: "",
   //   })
   // }
+
   return (
     <InputsWrapper>
       <SearchField
@@ -40,11 +42,13 @@ const Filters: React.FC<Props> = ({ characters, setFilters, tribes }) => {
       />
       <SelectField onChange={searchByTribe}>
         <option value="">All tribes</option>
-        {tribes.map((tribe: string, _index: number) => (
-          <option key={_index} value={tribe}>
-            {tribe}
-          </option>
-        ))}
+        {tribes
+          .sort(sortAlphabetically)
+          .map((tribe: string, _index: number) => (
+            <option key={_index} value={tribe}>
+              {tribe}
+            </option>
+          ))}
       </SelectField>
       {/* <Button onClick={resetFilters}>Reset</Button> */}
     </InputsWrapper>

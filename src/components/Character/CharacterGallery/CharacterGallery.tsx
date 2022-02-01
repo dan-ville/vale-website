@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import useCharacters from "../../../hooks/useCharacters"
 import { CharacterObjectInterface } from "../../../types/character/character"
+import sortAlphabetically from "../../../utils/sortAlphabetically"
 import Loading from "../../Loading/Loading"
 import CharacterCard from "../CharacterCard/CharacterCard"
 import Filters from "./Filters/Filters"
@@ -34,18 +35,11 @@ const CharacterGallery: React.FC = () => {
     setFilteredCharacters(multiFilter(characters))
   }, [characters, filters])
 
-  const sortAlphabetically = (
+
+  const sortNames = (
     a: CharacterObjectInterface,
     b: CharacterObjectInterface
-  ) => {
-    if (a.fields.Name < b.fields.Name) {
-      return -1
-    }
-    if (a.fields.Name > b.fields.Name) {
-      return 1
-    }
-    return 0
-  }
+  ) => sortAlphabetically(a.fields.Name, b.fields.Name)
 
   const tribes = Array.from(
     new Set<string>(
@@ -68,7 +62,7 @@ const CharacterGallery: React.FC = () => {
       <GalleryGrid>
         {filteredCharacters
           ? filteredCharacters
-              .sort(sortAlphabetically)
+              .sort(sortNames)
               .map((character: CharacterObjectInterface, index: number) => (
                 <CharacterCard
                   key={character.id}
