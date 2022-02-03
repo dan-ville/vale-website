@@ -1,11 +1,6 @@
 import styled from "styled-components"
 
-export const Wrapper = styled.div``
 export const GalleryGrid = styled.section`
-  max-width: 1600px;
-  margin: 0 auto;
-  width: 95%;
-  padding: 3rem 0;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, 275px);
@@ -13,16 +8,19 @@ export const GalleryGrid = styled.section`
   justify-content: center;
 `
 export const InputsWrapper = styled.div`
-  max-width: 1600px;
-  width: 95%;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
+  max-width: 1000px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
 `
 export const SearchField = styled.input`
-  margin: 0 0.5rem;
   padding: 0.2em 0.3em;
-  width: 300px;
+  width: 100%;
   color: white;
   font-size: 1.2rem;
   background-color: ${(props) => props.theme.bg};
@@ -36,9 +34,8 @@ export const SearchField = styled.input`
   }
 `
 export const SelectField = styled.select`
-  margin: 0 0.5rem;
   padding: 0.2em;
-  width: 20%;
+  width: 100%;
   color: white;
   font-size: 1.2rem;
   background-color: ${(props) => props.theme.bg};

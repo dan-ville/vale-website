@@ -2,11 +2,12 @@ import React from "react"
 import { useParams } from "react-router"
 import useCharacter from "../../../hooks/useCharacter"
 import Loading from "../../Loading/Loading"
-import CharacterView from "./CharacterProfie.View"
+import CharacterView from "./CharacterProfile.View"
 
 type Params = {
   id: string
 }
+
 const CharacterProfile: React.FC = () => {
   const { id } = useParams<Params>()
   const { character, isLoading } = useCharacter(id)

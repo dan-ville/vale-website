@@ -6,6 +6,7 @@ export const Card = styled(Button)`
   border: 1px solid ${(props) => props.theme.bg};
   overflow: hidden;
   border-radius: 0.3em;
+  text-align: left;
   background: linear-gradient(
     to right bottom,
     rgba(34, 75, 99, 0.6),
@@ -20,7 +21,9 @@ export const CardHeader = styled.div`
   padding: 0.5rem 1rem;
 `
 export const CharacterName = styled.h2`
-  color: ${(props) => props.theme.accent};
+  /* color: ${(props) => props.theme.accent}; */
+  font-size: 1.75rem;
+  font-weight: 700;
 `
 export const Thumbnail = styled.img`
   width: 100%;

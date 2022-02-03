@@ -1,4 +1,4 @@
-import {  ButtonCTA, PageTitle } from "../../pageStyles";
+import { ButtonCTA, PageTitle, PageWrapper } from "../../pageStyles"
 import {
   Section,
   CTASection,
@@ -6,12 +6,12 @@ import {
   DownloadAnchor,
   DownloadImage,
   ImageSection,
-} from "./styled";
-import Rane from "../../img/Rane.png";
+} from "./styled"
+import Rane from "../../img/Rane.png"
 
 const Read = () => {
   return (
-    <>
+    <PageWrapper>
       <PageTitle>Read</PageTitle>
       <Section>
         <ImageSection>
@@ -35,8 +35,8 @@ const Read = () => {
           </DownloadAnchor>
         </CTASection>
       </Section>
-    </>
+    </PageWrapper>
   )
-};
+}
 
-export default Read;
+export default Read

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import useCharacters from "../../../hooks/useCharacters"
+import { PageWrapper } from "../../../pageStyles"
 import { CharacterObjectInterface } from "../../../types/character/character"
 import sortAlphabetically from "../../../utils/sortAlphabetically"
 import Loading from "../../Loading/Loading"
@@ -53,7 +54,7 @@ const CharacterGallery: React.FC = () => {
   if (isLoading) return <Loading />
 
   return (
-    <>
+    <PageWrapper>
       <Filters
         characters={characters}
         setFilters={setFilters}
@@ -72,7 +73,7 @@ const CharacterGallery: React.FC = () => {
               ))
           : null}
       </GalleryGrid>
-    </>
+    </PageWrapper>
   )
 }
 

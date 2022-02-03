@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
-import { ButtonCTA, PageTitle } from "../../pageStyles"
+import { ButtonCTA, PageTitle, PageWrapper } from "../../pageStyles"
 import { Summary, SummaryHeading, SummaryAccent, CTA } from "./styled"
 
 export default function Home() {
   return (
-    <>
+    <PageWrapper>
       <PageTitle>The Vale</PageTitle>
       <Summary>
         <SummaryHeading>Long ago, when the world was one...</SummaryHeading>
@@ -33,6 +33,6 @@ export default function Home() {
           <ButtonCTA>Read the first chapter</ButtonCTA>
         </Link>
       </CTA>
-    </>
+    </PageWrapper>
   )
 }
