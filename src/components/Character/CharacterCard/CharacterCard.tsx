@@ -1,7 +1,14 @@
 import React from "react"
 import { useHistory } from "react-router"
+import TribalIcon from "../../../assets/icons/TribalIcon"
 import { CharacterObjectInterface } from "../../../types/character/character"
-import { Card, CardHeader, CharacterName, Thumbnail } from "./styled"
+import {
+  Card,
+  CardHeader,
+  CharacterName,
+  IconContainer,
+  Thumbnail,
+} from "./styled"
 
 type CharacterProps = {
   character: CharacterObjectInterface
@@ -19,6 +26,9 @@ const CharacterCard: React.FC<CharacterProps> = ({ character, index }) => {
   return (
     <Card key={index} onClick={(e) => goToProfile(e)}>
       <CardHeader>
+        <IconContainer>
+          <TribalIcon tribe={character?.fields?.["Name (from Tribe)"]?.[0]} />
+        </IconContainer>
         <CharacterName>{fields.Name}</CharacterName>
         <p>Tribe: {fields["Name (from Tribe)"]}</p>
         <p>Species: {fields["Name (from Species)"]?.join(", ")}</p>

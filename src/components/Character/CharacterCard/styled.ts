@@ -12,7 +12,7 @@ export const Card = styled(Button)`
     rgba(34, 75, 99, 0.6),
     rgba(7, 45, 66, 0.1)
   );
-
+  position: relative;
   &:hover {
     cursor: pointer;
   }
@@ -29,4 +29,9 @@ export const Thumbnail = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`
+export const IconContainer = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
 `
