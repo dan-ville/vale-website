@@ -7,9 +7,10 @@ const Navbar = () => {
         <NavItem to="/">Home</NavItem>
         <NavItem to="/read">Read</NavItem>
         <NavItem to="/characters">Characters</NavItem>
+        <NavItem to="/factions">Factions</NavItem>
       </NavItems>
     </NavbarWrapper>
-  );
+  )
 };
 
 export default Navbar;

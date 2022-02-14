@@ -13,7 +13,7 @@ const {
 } = process.env
 
 const AXIOS = axios.create({
-  baseURL,
+  baseURL: `${baseURL}/${baseId}`,
   headers: {
     Authorization: `Bearer ${apiKey}`,
   },
@@ -28,7 +28,7 @@ app.listen(PORT, () => {
 })
 
 app.get("/characters", (req, res) => {
-  const url = `${baseId}/Characters?view=Main%20View`
+  const url = `/Characters?view=Main`
   return AXIOS.get(url)
     .then((response) => {
       res.json(response.data.records)
@@ -45,4 +45,13 @@ app.get("/characters/:id", (req, res) => {
     }
     res.json(record)
   })
+})
+
+app.get("/factions", (req, res) => {
+  const url = `/Factions?view=Main`
+  return AXIOS.get(url)
+    .then((response) => {
+      res.json(response.data.records)
+    })
+    .catch((error) => console.error(error))
 })

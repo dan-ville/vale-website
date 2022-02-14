@@ -7,30 +7,30 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Characters from "./components/Character/Characters"
 import Read from "./components/Read/Read"
 import CharacterProfile from "./components/Character/CharacterProfile/CharacterProfile"
+import Factions from "./components/Factions/Factions"
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <AppWrapper>
-          <Router>
-            <Navbar />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/characters">
-                <Characters />
-              </Route>
-              <Route
-                exact
-                path="/characters/:id"
-                component={CharacterProfile}
-              />
-              <Route exact path="/read">
-                <Read />
-              </Route>
-            </Switch>
-          </Router>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/characters">
+              <Characters />
+            </Route>
+            <Route exact path="/characters/:id" component={CharacterProfile} />
+            <Route exact path="/factions">
+              <Factions />
+            </Route>
+            <Route exact path="/read">
+              <Read />
+            </Route>
+          </Switch>
+        </Router>
       </AppWrapper>
     </ThemeProvider>
   )

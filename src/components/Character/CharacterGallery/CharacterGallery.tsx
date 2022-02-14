@@ -36,7 +36,6 @@ const CharacterGallery: React.FC = () => {
     setFilteredCharacters(multiFilter(characters))
   }, [characters, filters])
 
-
   const sortNames = (
     a: CharacterObjectInterface,
     b: CharacterObjectInterface
